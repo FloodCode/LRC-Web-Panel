@@ -16,7 +16,7 @@
 <tbody>
 <?php foreach ($data['items'] as $item): ?>
     <tr>
-        <td><?php echo htmlspecialchars($item['user_id']) ?></td>
+        <td><a href="/user/index/?uid=<?php echo $item['user_id']; ?>"><?php echo htmlspecialchars($item['user_id']) ?></a></td>
         <td><?php echo htmlspecialchars($item['process']) ?></td>
         <td><?php echo htmlspecialchars($item['title']) ?></td>
         <td><?php echo htmlspecialchars($item['text']) ?></td>

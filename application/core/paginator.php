@@ -8,17 +8,33 @@ class Paginator
     private $page;
     private $limit;
     private $result;
+    private $sqlFilters;
+    private $getParams;
     
-    function __construct($module, $table, $where, $page, $limit)
+    function __construct($module, $table, $page, $limit, $sqlFilters, $getParams)
     {
         $this->module = $module;
         $this->table = $table;
         $this->limit = $limit;
         $this->page = $page;
         
+        $this->sqlFilters = '';
+        $this->getParams = '';
+        
+        if (count($sqlFilters) > 0)
+        {
+            $this->sqlFilters = ' WHERE ' . implode(' AND ', $sqlFilters);
+        }
+        
+        if (count($getParams) > 0)
+        {
+            $this->getParams .= '&' . implode('&', $getParams);
+        }
+        
         $this->result = array();
         
-        $stmt = $GLOBALS['DB']->prepare('SELECT COUNT(*) FROM ' . $table);
+        $sqlQuery = 'SELECT COUNT(*) FROM ' . $table . $this->sqlFilters;        
+        $stmt = $GLOBALS['DB']->prepare('SELECT COUNT(*) FROM ' . $table . $this->sqlFilters);
         $stmt->execute();
         
         $items = $stmt->fetchColumn();
@@ -33,7 +49,7 @@ class Paginator
         }
         else
         {
-            $pg_ulr = '/' . $this->module . '/index/?page=' . $page . '&perpage=' . $this->limit;
+            $pg_ulr = '/' . $this->module . '/index/?page=' . $page . '&limit=' . $this->limit . $this->getParams;
             array_push($this->result, array('text' => $text, 'url' => $pg_ulr));
         }
     }

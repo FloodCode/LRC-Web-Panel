@@ -52,6 +52,7 @@ main hr {
 }
 
 main a {
+    text-decoration: none;
     color: #009688;
 }
 
