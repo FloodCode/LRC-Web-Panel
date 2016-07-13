@@ -1,3 +1,4 @@
+<?php if (!is_null($data['paginator'])): ?>
 <div class="paginator">
     <?php foreach ($data['paginator'] as $pg_item): ?>
     <?php if ($pg_item['url'] == 'none'): ?>
@@ -7,3 +8,4 @@
     <?php endif; ?>
     <?php endforeach; ?>
 </div>
+<?php endif; ?>

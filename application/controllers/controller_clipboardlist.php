@@ -11,7 +11,8 @@ class Controller_Clipboardlist extends Controller
 	
 	function action_index()
 	{
-		$data = $this->model->get_data();		
+		$data = $this->model->get_data();
+        $this->view->title = "Clipboard data list";
 		$this->view->generate('clipboardlist_view.php', 'template_view.php', $data);
 	}
 }

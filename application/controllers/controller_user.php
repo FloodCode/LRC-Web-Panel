@@ -11,7 +11,8 @@ class Controller_User extends Controller
 	
 	function action_index()
 	{
-		$data = $this->model->get_data();		
+		$data = $this->model->get_data();
+        $this->view->title = "User information";	
 		$this->view->generate('user_view.php', 'template_view.php', $data);
 	}
 }

@@ -1,3 +1,11 @@
+@color-main: #3F51B5;
+@color-light1: #5C6BC0;
+@color-light2: #7986CB;
+@color-dark1: #3949AB;
+@color-dark2: #303F9F;
+@color-dark3: #283593;
+
+
 body {
     font-family: 'Roboto', sans-serif;
     margin: 0;
@@ -7,7 +15,7 @@ body {
 /* Header */
 
 header {
-    background-color: #009688;
+    background-color: @color-main;
     color: #fff;
     min-width: 1100px;
     width: 100%;
@@ -48,16 +56,16 @@ main {
 main hr {
     border: 0;
     border-bottom: 1px dashed #B2DFDB;
-    background: #00796B;
+    background: @color-dark2;
 }
 
 main a {
     text-decoration: none;
-    color: #009688;
+    color: @color-main;
 }
 
 main a:hover {
-    color: #00695C;
+    color: @color-dark3;
 }
 
 /* Main end */
@@ -65,7 +73,7 @@ main a:hover {
 /* Footer */
 
 footer {
-    background-color: #00796B;
+    background-color: @color-dark2;
     color: #fff;
     min-width: 1100px;
     width: 100%;
@@ -81,7 +89,7 @@ footer {
 }
 
 h1, h2, h3, h4, h5, h6 {
-    color: #009688;
+    color: @color-main;
     font-weight: lighter;
 }
 
@@ -126,7 +134,7 @@ table.table-data, .table-data tr, .table-data th, .table-data td {
 .table-data th {
     font-weight: normal;
     width: 20%;
-    background-color: #009688;
+    background-color: @color-main;
     color: #fff;
 }
 
@@ -141,12 +149,12 @@ table.table-data, .table-data tr, .table-data th, .table-data td {
 
 .main-menu-wrapper {
     width: 100%;
-    background-color: #00796B;
+    background-color: @color-dark2;
 }
 
 ul.main-menu {
     width: 1100px;
-    background-color: #00796B;
+    background-color: @color-dark2;
     overflow: hidden;
     list-style-type: none;
     margin: 0 auto;
@@ -166,8 +174,8 @@ ul.main-menu li a {
     text-decoration: none;
 }
 
-ul.main-menu li a:hover:not(.active) {
-    background-color: #009688;
+ul.main-menu li a:hover, ul.main-menu li a.active {
+    background-color: @color-main;
 }
 
 /* Main Menu end */
@@ -197,7 +205,7 @@ input[type="text"], input[type="password"], textarea {
 }
 
 input[type="submit"] {
-    background-color: #009688;
+    background-color: @color-main;
     border: none;
     color: white;
     padding: 10px 15px;
@@ -210,7 +218,7 @@ input[type="submit"] {
 }
 
 input[type="submit"]:hover {
-    background-color: #00897B;
+    background-color: @color-dark1;
     cursor: pointer;
 }
 
@@ -242,10 +250,10 @@ input[type=radio]:not(old) + label > span {
 }
 
 input[type=checkbox]:not(old):checked + label > span:before {
-    content: '✓';
+    content: '?';
     display: block;
     width: 20px;
-    color: #26A69A;
+    color: @color-light1;
     font-size: 1.2em;
     line-height: 20px;
     text-align: center;
@@ -257,9 +265,9 @@ input[type=radio]:not(old):checked + label > span > span {
     width: 12px;
     height: 12px;
     margin: 3px;
-    border: 1px solid #00695C;
+    border: 1px solid @color-dark3;
     border-radius: 2px;
-    background: #26A69A;
+    background: @color-light1;
 }
 
 /* Form, Input end */
@@ -284,12 +292,12 @@ div.paginator a {
 }
 
 div.paginator span.btn-enabled {
-    background-color: #009688;
+    background-color: @color-main;
     color: #fff;
 }
 
 div.paginator span.btn-enabled:hover {
-    background-color: #00897B;
+    background-color: @color-dark1;
 }
 
 div.paginator span.btn-disabled {

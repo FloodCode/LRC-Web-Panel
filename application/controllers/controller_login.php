@@ -12,11 +12,6 @@ class Controller_Login extends Controller
 			$login = $_POST['login'];
 			$password =$_POST['password'];
 			
-			/*
-			Производим аутентификацию, сравнивая полученные значения со значениями прописанными в коде.
-			Такое решение не верно с точки зрения безопсаности и сделано для упрощения примера.
-			Логин и пароль должны храниться в БД, причем пароль должен быть захеширован.
-			*/
 			if($login=="admin" && $password=="12345")
 			{
 				$data["login_status"] = "access_granted";
@@ -35,6 +30,7 @@ class Controller_Login extends Controller
 			$data["login_status"] = "";
 		}
 		
+        $this->view->title = "Sing in page";	
 		$this->view->generate('login_view.php', 'template_view.php', $data);
 	}
 	

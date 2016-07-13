@@ -66,6 +66,11 @@ class Paginator
     {
         $page = $this->page;
         $pages = $this->pages;
+    
+        if ($pages == 1)
+        {
+            return NULL;
+        }
         
         // Previous page
         $this->generate_link($page != 1 ? $page - 1 : 'none', '&lsaquo;');

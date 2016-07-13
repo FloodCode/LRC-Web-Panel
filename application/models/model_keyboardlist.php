@@ -79,6 +79,7 @@ class Model_Keyboardlist extends Model
         $paginator = new Paginator('keyboardlist', 'keyboard', $page, $limit, $sqlFilters, $getParams);
         $result['paginator'] = $paginator->get_paginator();
         
+        
         return $result;
     }
 
