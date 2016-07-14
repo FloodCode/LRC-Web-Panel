@@ -1,7 +1,28 @@
-<?php if ($data['state'] == 'no results'): ?>
-<h2>No results</h2>
-<?php elseif ($data['state'] == 'ok'): ?>
 <h2>Keyboard data:</h2>
+
+<div class="content-box">
+    <div class="content-title">
+        <p>Search</p>
+    </div>
+    <div class="content-block">
+        <label>Process</label>
+        <input class="small" type="text" value="<?php if (isset($data['params']['proc'])) { echo $data['params']['proc']; } ?>" id="s-process">
+        <label>Title</label>
+        <input class="small" type="text" value="<?php if (isset($data['params']['title'])) { echo $data['params']['title']; } ?>" id="s-title">
+        <label>Text</label>
+        <input class="small" type="text" value="<?php if (isset($data['params']['q'])) { echo $data['params']['q']; } ?>" id="s-text">
+        <input id="s-withtext" type="checkbox" name="s-withtext" value="1"<?php if (isset($data['params']['withtext'])) { echo ' checked="checked"'; } ?>><label for="s-withtext"><span></span>With text</label>
+        <button onclick="doSearchKeyboard()">Search</button>
+    </div>
+</div>
+
+<?php if ($data['state'] == 'no results'): ?>
+<div style="text-align: center;">
+    <h2>No results</h2>
+</div>
+<?php endif; ?>
+
+<?php if ($data['state'] == 'ok'): ?>
 <?php include 'paginator.php' ?>
 <table class="table-data" style="width: 100%;">
     <thead>

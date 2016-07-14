@@ -4,6 +4,18 @@ class Route
 {
     static function start()
     {
+        session_start();
+        
+        if(!isset($_SESSION['admin_id']))
+		{
+			include "application/controllers/controller_login.php";
+			$controller_name = 'Controller_Login';
+			$controller = new $controller_name;
+			$action = 'action_index';
+			$controller->$action();
+			die;
+		}
+        
         // Set controller and action to default values
         $controller_name = 'Main';
         $action_name = 'index';

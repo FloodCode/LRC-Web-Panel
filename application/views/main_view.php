@@ -21,7 +21,7 @@
     <li>Log clipboard data</li>
 </ol>
 <h2>Overview</h2>
-<p>Server communicates with Client by sending string commands. Once client accepts command, it sends back an binary representation of object LRCData. All data blocks in LRCData object are represented in big endian.</p>
+<p>Server communicates with Client by sending string commands. Once client accepts command, it sends back a binary representation of LRCData object. All data blocks in LRCData object are represented in big endian.</p>
 <h2>Links</h2>
 <p>Github:</p>
 <ul>

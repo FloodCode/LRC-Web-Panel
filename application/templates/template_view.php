@@ -9,12 +9,7 @@ unset($pos);
 <!DOCTYPE html>
 <html lang="en">
     <head>
-        <meta charset="utf-8">
-        <meta name="description" content="Remote administration Web panel">
-        <meta name="viewport" content="width=device-width">
-        <meta name="theme-color" content="#009688">
-        <link rel="stylesheet" type="text/css" href="/css/style-indigo.css">
-        <link rel="stylesheet" type="text/css" href="/css/fonts.css">
+<?php include 'template_head.php' ?>
         <title><?php echo $view->title; ?> - LRC</title>
     </head>
     <body>
@@ -28,14 +23,15 @@ unset($pos);
                     <li><a <?php if ($module_name == 'userlist') { echo 'class="active" '; } ?>href="/userlist/index/">User list</a></li>
                     <li><a <?php if ($module_name == 'keyboardlist') { echo 'class="active" '; } ?>href="/keyboardlist/index/">Keyboard</a></li>
                     <li><a <?php if ($module_name == 'clipboardlist') { echo 'class="active" '; } ?>href="/clipboardlist/index/">Clipboard</a></li>
-                    <li style="float: right;"><a href="/">Log out</a></li>
+                    <li style="float: right;"><a href="/login/logout/">Log out</a></li>
+                    <li style="float: right;"><a <?php if ($module_name == 'settings') { echo 'class="active" '; } ?>href="/settings/index/">Settings</a></li>
                 </ul>
             </div>
         </header>
         <main>
             <div class="main-wrapper">
                 <div class="content-block">
-<?php include 'application/views/'.$content_view; ?>
+                    <?php include 'application/views/'.$content_view; ?>
                 </div>
             </div>
         </main>

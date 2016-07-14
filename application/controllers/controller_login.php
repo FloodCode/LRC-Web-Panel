@@ -5,33 +5,40 @@ class Controller_Login extends Controller
 	
 	function action_index()
 	{
-		//$data["login_status"] = "";
-
+        $data = array();
+        
 		if(isset($_POST['login']) && isset($_POST['password']))
 		{
-			$login = $_POST['login'];
-			$password =$_POST['password'];
-			
-			if($login=="admin" && $password=="12345")
-			{
-				$data["login_status"] = "access_granted";
-				
-				session_start(); echo $_SESSION['admin'];
-				$_SESSION['admin'] = $password;
-				header('Location:/admin/');
-			}
-			else
-			{
-				$data["login_status"] = "access_denied";
-			}
-		}
-		else
-		{
-			$data["login_status"] = "";
+
+            $login = $_POST['login'];
+            $password = $_POST['password'];
+            $password = SALT . $password;
+            $password = hash('sha256', $password);
+
+            $stmt = $GLOBALS['DB']->prepare('SELECT id FROM admins WHERE login = :login AND password = :password');
+            $stmt->execute(array(':login' => $login, ':password' => $password));
+            $row = $stmt->fetch();
+
+            if(isset($row['id']))
+            {
+                $_SESSION['admin_id'] = $row['id'];
+                header('Location:/');
+            }
+            else
+            {
+                $data['error'] = 'Incorrect login or password';
+            }
 		}
 		
-        $this->view->title = "Sing in page";	
-		$this->view->generate('login_view.php', 'template_view.php', $data);
+        $this->view->title = 'Sing in page';	
+		$this->view->generate('login_view.php', 'template_login.php', $data);
+        
 	}
+    
+    function action_logout()
+    {
+        session_destroy();
+        header('Location:/');
+    }
 	
 }

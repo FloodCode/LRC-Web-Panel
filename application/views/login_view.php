@@ -1,20 +1,21 @@
-<h2>Login</h2>
-<div style="width: 300px; margin: 0 auto;">
-    <form action="" method="post">
-        <label>Login</label>
-        <input style="width: 284px;" type="text" name="login">
-        <label>Password</label>
-        <input style="width: 284px;" type="password" name="password">
-        <div style="text-align: right;">
-            <input type="submit" value="Log in" name="btn">
-        </div>
-    </form>
+<div class="login-box">
+    <div class="login-title">
+        <h2>Authorization</h2>
+    </div>
+    <div class="container">
+        <form method="post">
+            <label style="margin: 10px 0 0 0;">Login</label>
+            <input style="width: 334px;" type="text" name="login">
+            <label style="margin: 10px 0 0 0;">Password</label>
+            <input style="width: 334px;" type="password" name="password">
+            <div style="text-align: right;">
+                <input type="submit" value="Log in" name="btn">
+            </div>
+        </form>
+    </div>
 </div>
 
 
-<?php extract($data); ?>
-<?php if($login_status=="access_granted") { ?>
-<p style="color:green">Success.</p>
-<?php } elseif($login_status=="access_denied") { ?>
-<p style="color:red">Login or password is incorrect.</p>
-<?php } ?>
+<?php if (isset($data['error'])): ?>
+<p style="color: red; margin: 0; padding: 10px;"><?php echo $data['error']; ?></p>
+<?php endif; ?>

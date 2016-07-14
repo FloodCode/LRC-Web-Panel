@@ -12,4 +12,5 @@ require_once 'core/database.php';
 
 // Include and start router
 require_once 'core/route.php';
+
 Route::start();
