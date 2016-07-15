@@ -10,18 +10,17 @@ class Controller_Login extends Controller
 		if(isset($_POST['login']) && isset($_POST['password']))
 		{
 
-            $login = $_POST['login'];
-            $password = $_POST['password'];
-            $password = SALT . $password;
-            $password = hash('sha256', $password);
+            $login = strtolower($_POST['login']);
+            $password = hash('sha256', SALT . $_POST['password']);
 
-            $stmt = $GLOBALS['DB']->prepare('SELECT id FROM admins WHERE login = :login AND password = :password');
+            $stmt = $GLOBALS['DB']->prepare('SELECT * FROM admins WHERE login = :login AND password = :password');
             $stmt->execute(array(':login' => $login, ':password' => $password));
             $row = $stmt->fetch();
 
             if(isset($row['id']))
             {
                 $_SESSION['admin_id'] = $row['id'];
+                $_SESSION['theme'] = $row['theme'];
                 header('Location:/');
             }
             else
