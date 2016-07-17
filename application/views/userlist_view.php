@@ -14,13 +14,14 @@
     </thead>
     <tbody>
     <?php foreach ($data['items'] as $item): ?>
-        <tr>
-            <td><?php echo $item['id'] ?></td>
-            <td><?php echo $item['name'] ?></td>
-            <td><?php echo $item['sha256'] ?></td>
-            <td><?php echo $item['ip'] ?></td>
-            <td><?php echo $item['signup_time'] ?></td>
-        </tr>
+            <tr>
+                <td><div style="text-align: center;"><a href="/user/index/?uid=<?php echo $item['id']; ?>">[<?php echo $item['id'] ?>]</a></div></td>
+                <td><?php echo $item['name'] ?></td>
+                <td><?php echo $item['sha256'] ?></td>
+                <td><?php echo $item['ip'] ?></td>
+                <td><?php echo $item['signup_time'] ?></td>
+            </tr>
+        
     <?php endforeach; ?>
     </tbody>
 </table>

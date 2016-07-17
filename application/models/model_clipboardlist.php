@@ -26,6 +26,7 @@ class Model_Clipboardlist extends Model
         
         $sqlFilters = array();
         $getParams = array();
+        $params = array();
         
         if (isset($_GET['uid']))
         {
@@ -33,6 +34,7 @@ class Model_Clipboardlist extends Model
             {
                 array_push($sqlFilters, 'user_id = ' . $_GET['uid']);
                 array_push($getParams, 'uid=' . $_GET['uid']);
+                $params['uid'] = $_GET['uid'];
             }
         }
         
@@ -40,19 +42,34 @@ class Model_Clipboardlist extends Model
         {
             array_push($sqlFilters, 'text LIKE "%' . mysql_real_escape_string($_GET['q']) . '%"');
             array_push($getParams, 'q=' . $_GET['q']);
+            $params['q'] = $_GET['q'];
         }
         
         if (isset($_GET['proc']))
         {
-            array_push($sqlFilters, 'process = "' . mysql_real_escape_string($_GET['proc']) . '"');
+            array_push($sqlFilters, 'process LIKE "%' . mysql_real_escape_string($_GET['proc']) . '%"');
             array_push($getParams, 'proc=' . $_GET['proc']);
+            $params['proc'] = $_GET['proc'];
         }
         
         if (isset($_GET['title']))
         {
             array_push($sqlFilters, 'title LIKE "%' . mysql_real_escape_string($_GET['title']) . '%"');
             array_push($getParams, 'title=' . $_GET['title']);
+            $params['title'] = $_GET['title'];
         }
+        
+        if (isset($_GET['withtext']))
+        {
+            if ($_GET['withtext'] === 'true')
+            {
+                array_push($sqlFilters, 'text IS NOT NULL');
+                array_push($getParams, 'withtext=true');
+                $params['withtext'] = true;
+            }
+        }
+        
+        $result['params'] = $params;
         
         $sqlWhereClause = '';
         if (count($sqlFilters) > 0)
@@ -78,6 +95,7 @@ class Model_Clipboardlist extends Model
         
         $paginator = new Paginator('clipboardlist', 'clipboard', $page, $limit, $sqlFilters, $getParams);
         $result['paginator'] = $paginator->get_paginator();
+        
         
         return $result;
     }

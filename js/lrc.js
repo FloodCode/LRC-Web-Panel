@@ -1,12 +1,33 @@
-function doSearchKeyboard() {
+function searchKeyDown(event) {
+    if (event.keyCode == 13) {
+        document.getElementById('search-button').click();
+    }
+}
+
+function doSearch(module) {
     
     var args = [];
+    var sUID = document.getElementById('s-uid');
     var sProcess = document.getElementById('s-process');
     var sTitle = document.getElementById('s-title');
     var sText = document.getElementById('s-text');
     var sWithText = document.getElementById('s-withtext');
     
     var valueBuffer;
+    
+    if (sUID !== null) {
+        
+        valueBuffer = sUID.value;
+        
+        if (sUID != null && valueBuffer != '') {
+            var arg = {
+                key: 'uid',
+                value: valueBuffer
+            };
+            args.push(arg);
+        }
+        
+    }
     
     if (sProcess !== null) {
         
@@ -78,9 +99,9 @@ function doSearchKeyboard() {
     }
     
     if (query !== '') {
-        window.location = '/keyboardlist/index/?' + query;
+        window.location = '/' + module + '/index/?' + query;
     } else {
-        window.location = '/keyboardlist/index/';
+        window.location = '/' + module + '/index/';
     }
     
 }
