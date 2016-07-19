@@ -49,7 +49,7 @@
             <?php if (!isset($data['params']['uid'])): ?>
             <td><div style="text-align: center;"><a href="/user/index/?uid=<?php echo $item['user_id']; ?>">[<?php echo $item['user_id'] ?>]</a></div></td>
             <?php endif; ?>
-            <td><?php echo htmlspecialchars($item['process']) ?></td>
+            <td style="text-align: center;"><?php echo htmlspecialchars($item['process']) ?></td>
             <td><?php echo htmlspecialchars($item['title']) ?></td>
             <td><?php echo htmlspecialchars($item['text']) ?></td>
             <td><?php echo htmlspecialchars($item['event_time']) ?></td>

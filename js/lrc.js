@@ -83,8 +83,6 @@ function doSearch(module) {
         }
     }
     
-    console.log(args);
-    
     var query = '';
     
     var i = 0;

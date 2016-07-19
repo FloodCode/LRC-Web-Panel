@@ -6,20 +6,26 @@
     <thead>
         <tr>
             <th style="width: 5%;">UID</th>
-            <th style="width: 10%;">Name</th>
-            <th style="width: 55%;">SHA256</th>
+            <th style="width: 25%;">Name</th>
             <th style="width: 15%;">IP</th>
+            <th style="width: 5%;">Lat.</th>
+            <th style="width: 10%;">OS</th>
+            <th style="width: 15%;">CPU</th>
+            <th style="width: 10%;">RAM</th>
             <th style="width: 15%;">Signup time</th>
         </tr>
     </thead>
     <tbody>
     <?php foreach ($data['items'] as $item): ?>
             <tr>
-                <td><div style="text-align: center;"><a href="/user/index/?uid=<?php echo $item['id']; ?>">[<?php echo $item['id'] ?>]</a></div></td>
+                <td style="text-align: center;"><a href="/user/index/?uid=<?php echo $item['id']; ?>">[<?php echo $item['id'] ?>]</a></td>
                 <td><?php echo $item['name'] ?></td>
-                <td><?php echo $item['sha256'] ?></td>
                 <td><?php echo $item['ip'] ?></td>
-                <td><?php echo $item['signup_time'] ?></td>
+                <td style="text-align: center;"><?php echo $item['latency'] ?></td>
+                <td><?php echo $item['os'] ?></td>
+                <td><?php echo $item['cpu'] ?></td>
+                <td style="text-align: center;"><?php echo $item['ram'] ?></td>
+                <td style="text-align: center;"><?php echo $item['signup_time'] ?></td>
             </tr>
         
     <?php endforeach; ?>

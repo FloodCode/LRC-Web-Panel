@@ -21,7 +21,7 @@ unset($pos);
                 <div class="main-menu-wrapper">
                    <ul class="main-menu">
                         <li><a <?php if ($module_name == 'main') { echo 'class="active" '; } ?>href="/">Main page</a></li>
-                        <li><a <?php if ($module_name == 'userlist') { echo 'class="active" '; } ?>href="/userlist/index/">User list</a></li>
+                        <li><a <?php if ($module_name == 'userlist' || $module_name == 'user') { echo 'class="active" '; } ?>href="/userlist/index/">Users</a></li>
                         <li><a <?php if ($module_name == 'keyboardlist') { echo 'class="active" '; } ?>href="/keyboardlist/index/">Keyboard</a></li>
                         <li><a <?php if ($module_name == 'clipboardlist') { echo 'class="active" '; } ?>href="/clipboardlist/index/">Clipboard</a></li>
                         <li style="float: right;"><a href="/login/logout/">Log out</a></li>

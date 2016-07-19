@@ -10,6 +10,18 @@ require_once 'core/controller.php';
 // ...
 require_once 'core/database.php';
 
+function getUserTextIdentifier($user)
+{
+    if (!is_null($user['name']))
+    {
+        return $user['id'] . ' (' . $user['name'] . ')';
+    }
+    else
+    {
+        return $user['id'];
+    }
+}
+
 // Include and start router
 require_once 'core/route.php';
 
